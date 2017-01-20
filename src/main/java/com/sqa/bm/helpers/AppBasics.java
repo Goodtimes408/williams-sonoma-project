@@ -9,6 +9,8 @@ package com.sqa.bm.helpers;
 
 import java.util.*;
 
+import com.sqa.bm.helpers.exceptions.*;
+
 /**
  * AppBasics //ADDD (description of class)
  * <p>
@@ -45,5 +47,37 @@ public class AppBasics {
 		System.out.println(info + " ");
 		response = scanner.nextLine();
 		return response;
+	}
+
+	public static int requestIntFromUser(String question) {
+		return requestIntFromUser(question, 0, 0);
+	}
+
+	public static int requestIntFromUser(String question, int min, int max) {
+		String input;
+		int result = 0;
+		boolean isValid = false;
+		while (!isValid) {
+			try {
+				System.out.println(question + " ");
+				input = scanner.nextLine();
+				result = Integer.parseInt(input);
+				if (min != 0 && max != 0) {
+					if (result <= max && result >= min) {
+						isValid = true;
+					} else {
+						throw new NumberNotInRangeException();
+					}
+				}
+				isValid = true;
+			} catch (NumberFormatException e) {
+				// TODO Give an error message //
+				System.out.println("You have not entered a correct number value.");
+			} catch (NumberNotInRangeException e) {
+				// TODO Auto-generated catch block
+				System.out.println("You have no entered a number within the range of " + min + " and " + max + ".");
+			}
+		}
+		return result;
 	}
 }
