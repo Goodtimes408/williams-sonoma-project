@@ -1,7 +1,7 @@
-# Basic Project
-## Basic Project Structure
+# Williams Sonoma
+# Williams Sonoma Project Structure
 
-*Default Structure for A Basic Project*
+*Default Structure for Williams Sonoma Project*
 
 **Java 7**
 
